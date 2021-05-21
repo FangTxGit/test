@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            transition: all .5s;
+            margin: 100px 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .box:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>
+<script>
+    var left = 0
+    var speed = 1
+    var maxLeft = 900;
+    var div = document.getElementsByClassName('box')[0]
+    var s = div.style
+    function move() {
+        left = ++speed + ++left;
+
+        s.left = left + 'px'
+        loop()
+    }
+    function loop() {
+        if (left < maxLeft) {
+
+            window.requestAnimationFrame(move)
+        }
+    }
+    loop()
+
+</script>

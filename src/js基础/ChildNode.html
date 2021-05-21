@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul id="ui"></ul>
+    </div>
+    <!-- <a href="#contents">click</a>
+        <h1>Title</h1>
+        <a><h2>Contents</h2></a>
+        <ul id="toc" style="color: red"></ul>
+
+        <a><h2>Plants</h2></a>
+        <ol>
+            <li>Apples</li>
+            <li>Oranges</li>
+            <li>Pears</li>
+        </ol>
+        <img src="" alt="" srcset="" />
+        <a><h2>Veggies</h2></a>
+        <ol>
+            <li>Carrots</li>
+            <li>Celery</li>
+            <li>Beats</li>
+        </ol>
+        <h1>Title</h1>
+        <a><h2>Contents</h2></a>
+        <ul id="toc"></ul>
+
+        <a><h2>Plants</h2></a>
+        <ol>
+            <li>Apples</li>
+            <li>Oranges</li>
+            <li>Pears</li>
+        </ol>
+
+        <a><h2>Veggies</h2></a>
+        <ol>
+            <li>Carrots</li>
+            <li>Celery</li>
+            <li>Beats</li>
+        </ol>
+        <h1>Title</h1>
+        <a name="contents"><h2>Contents</h2></a>
+        <ul id="toc"></ul>
+
+        <a><h2>Plants</h2></a>
+        <ol>
+            <li>Apples</li>
+            <li>Oranges</li>
+            <li>Pears</li>
+        </ol>
+
+        <a><h2>Veggies</h2></a>
+        <ol>
+            <li>Carrots</li>
+            <li>Celery</li>
+            <li>Beats</li>
+        </ol>
+        <h1>Title</h1>
+        <a><h2>Contents</h2></a>
+        <ul id="toc"></ul>
+
+        <a><h2>Plants</h2></a>
+        <ol>
+            <li>Apples</li>
+            <li>Oranges</li>
+            <li>Pears</li>
+        </ol>
+
+        <a><h2>Veggies</h2></a>
+        <ol>
+            <li>Carrots</li>
+            <li>Celery</li>
+            <li>Beats</li>
+        </ol>
+        <h1>Title</h1>
+        <a><h2>Contents</h2></a>
+        <ul id="toc"></ul>
+
+        <a><h2>Plants</h2></a>
+        <ol>
+            <li>Apples</li>
+            <li>Oranges</li>
+            <li>Pears</li>
+        </ol>
+
+        <a><h2>Veggies</h2></a>
+        <ol>
+            <li>Carrots</li>
+            <li>Celery</li>
+            <li>Beats</li>
+        </ol> -->
+  </body>
+</html>
+<script>
+  (function () {
+    function postData(i) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('当前是' + i);
+        }, 1000);
+      });
+    }
+
+    var timer = setTimeout(() => {
+      var max = 1000000;
+      var once = 5;
+      var num = max / once;
+      var countOfRender = 0;
+      var ul = document.querySelector('#ui');
+      async function add() {
+        var f = document.createDocumentFragment();
+        for (let i = 0; i < once; i++) {
+          var li = document.createElement('li');
+          const res = await postData(Math.floor(Math.random() * max));
+          li.innerText = res;
+          f.appendChild(li);
+        }
+        ui.appendChild(f);
+        countOfRender++;
+        loop();
+      }
+      function loop() {
+        if (countOfRender > num) {
+          clearTimeout(timer);
+        } else {
+          window.requestAnimationFrame(add);
+        }
+      }
+      loop();
+    }, 0);
+  })();
+</script>
